@@ -3,4 +3,4 @@
 let a = +prompt('Введите значение');
 if (a > 0) { console.log('Положительное'); }
 else if (a < 0) { console.log('Отрицательное'); }
-else if (a = 0) { console.log('Ноль'); }
+else if (a == 0) { console.log('Ноль'); }
