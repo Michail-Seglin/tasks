@@ -10,6 +10,6 @@ if ((b ** 2 - 4 * a * c) < 0) {
 }
 else if ((b ** 2 - 4 * a * c) == 0) { console.log(-b / (2 * a)); }
 else if ((b ** 2 - 4 * a * c) > 0) {
-    console.log(((-b + Math.sqrt((b ** 2 - 4 * a * c))) / (2 * a),
-     (-b - Math.sqrt((b ** 2 - 4 * a * c)))) / (2 * a));
+    console.log((-b + Math.sqrt((b ** 2 - 4 * a * c))) / (2 * a));
+    console.log((-b - Math.sqrt((b ** 2 - 4 * a * c))) / (2 * a));
 }
