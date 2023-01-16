@@ -1,6 +1,14 @@
-// Вы вводите значение с клавиатуры. Если значение четное, то вывести true, в
-// противном случае false
-const a = +prompt('Введите число');
-if(a%2 == 0)
-{console.log('Четное');}
-else {console.log('Нечетное');}
+// Ввести строку. Если эта равна “hschool”, вывести true. В противном случае false.
+// Добавить проверки для строк. Удалить лишние пробелы
+const str = prompt('Введите школу').trim();
+
+if (!isNaN(str)) {
+    console.log(false);
+} else {
+    if (str==='hschool'){
+        console.log(true);
+    }
+    else {
+    console.log('nothschool');}
+}
+
