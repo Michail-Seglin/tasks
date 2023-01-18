@@ -3,5 +3,7 @@
 // и фамилия начинаются с заглавной буквы.
 // Chris Alan => true
 // chris alan => false
-const str = prompt('Name').trim();
-if (str.)
+const str = prompt('your name and surname').trim().split(' ');
+if (str[0][0] === str[0][0].toUpperCase() && str[1][0] === str[1][0].toUpperCase()) {
+    console.log(true);
+} else console.log(false);

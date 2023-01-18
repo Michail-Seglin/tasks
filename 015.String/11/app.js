@@ -3,13 +3,9 @@
 // • Вырежите из нее 2 и 3 слова.
 // • Найдите индекс 2 подстроки
 const str = prompt('Введите строку из 3 слов').trim().toLowerCase();
-if(isNaN(str)) {
-    let str_sl = str.slice(' ').slice(1);
-
-    console.log(str.indexOf(str_sl[0]));
-console.log(str.length, str_sl);
-} else console.log('error');
- 
-console.log(str.slice(' ').length);
-
+let strSl = str.split(" ").slice(1);
+console.log();
+console.log(`Количество символов в этой строке: ${str.replaceAll(' ','').length}`);
+console.log(`2 и 3 слово: ${str.split(" ").slice(1)}`);
+console.log(`индекс 2 подстроки: ${str.indexOf(strSl[0])}`);
 

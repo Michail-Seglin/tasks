@@ -1,8 +1,6 @@
-// Пользователь вводит с клавиатуры число. Найдите корень введенного числа (если
-//     же результат – число с плавающей точкой, то округлить то целых)
-const a = +prompt('Введите число');
-let b = Math.sqrt(a);
-if (b % 1 == 0) {
-    console.log(b);
+// Дан массив. Вывести каждый отдельный элемент в консоль (for)
+const arr = prompt('input array').split('');
+for(let i =0; i<arr.length; i++)
+{
+    console.log(arr[i]);
 }
-else { console.log(Math.round(b)) }

@@ -6,8 +6,6 @@ if (isNaN(str)) {
     console.log(str[0].toUpperCase() + str.slice(1));
 }
 else {
-    console.log('Ошиька ввода');
+    console.log('Ошибка ввода');
 }
-
-
-// console.log(isNan(str) ? str[0].toUpperCase() + str.slice(1) : 'Ошибка ввода');
+console.log(isNaN(str) ? str[0].toUpperCase() + str.slice(1) : 'Ошибка ввода');
