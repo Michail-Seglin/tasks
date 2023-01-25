@@ -7,7 +7,7 @@ if (isNaN(a)) {
     console.log('Ошибка ввода');
 }
 else {
-    a = Number(a);
+    a == Number(a);
     if (Number.isInteger(b)) {
         console.log(b);
     }

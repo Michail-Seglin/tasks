@@ -5,11 +5,12 @@
 const a = +prompt('Введите число a');
 const b = +prompt('Введите число b');
 const c = +prompt('Введите число c');
-if ((b ** 2 - 4 * a * c) < 0) {
+let d =b ** 2 - 4 * a * c;
+if (d < 0) {
     console.log('Дискриминант меньше 0');
 }
-else if ((b ** 2 - 4 * a * c) == 0) { console.log(-b / (2 * a)); }
-else if ((b ** 2 - 4 * a * c) > 0) {
-    console.log((-b + Math.sqrt((b ** 2 - 4 * a * c))) / (2 * a));
-    console.log((-b - Math.sqrt((b ** 2 - 4 * a * c))) / (2 * a));
+else if (d == 0) { console.log(-b / (2 * a)); }
+else if (d > 0) {
+    console.log((-b + Math.sqrt(d)) / (2 * a));
+    console.log((-b - Math.sqrt(d)) / (2 * a));
 }

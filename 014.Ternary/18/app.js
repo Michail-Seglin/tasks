@@ -1,8 +1,6 @@
-// Пользователь вводит с клавиатуры число. Найдите корень введенного числа (если
-//     же результат – число с плавающей точкой, то округлить то целых)
-const a = +prompt('Введите число');
-let b = Math.sqrt(a);
-if (b % 1 == 0) {
-    console.log(b);
-}
-else { console.log(Math.round(b)) }
+// Пользователь вводит строку. Необходимо сделать проверку, что это не число и
+// вывести текущую строку в большом регистре
+let str = prompt('Input string');
+if (isNaN(str)) {
+    console.log(str.toUpperCase());
+} else console.log('Its not a string');

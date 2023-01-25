@@ -7,7 +7,7 @@ const b = +prompt('input number for 1 to 9');
 if (isNaN(a) && isNaN(b)) {
     console.log("input number");
 }
-else if (a >0 && a < 10 && b >0 && b <10) {
+else if (a >=0 && a < 10 && b >0 && b <10) {
     if (a == 0) {
         console.log(`I’m ${b}`);
     }
@@ -15,4 +15,4 @@ else if (a >0 && a < 10 && b >0 && b <10) {
         console.log(`I’m ${a}${b}`);
     }
 }
-else { console.log('errosr'); }
+else { console.log('error'); }
