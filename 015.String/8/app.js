@@ -4,6 +4,7 @@ if (isNaN(str)) {
     let b = str.indexOf('b');
     let c = str.lastIndexOf('b');
     console.log(str.slice(b, c + 1));
+
 } else {
     console.log('error');
-}
+} console.log((str.slice(4, 7)));
