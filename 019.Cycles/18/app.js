@@ -1,8 +1,10 @@
-// Пользователь вводит с клавиатуры число. Найдите корень введенного числа (если
-//     же результат – число с плавающей точкой, то округлить то целых)
-const a = +prompt('Введите число');
-let b = Math.sqrt(a);
-if (b % 1 == 0) {
-    console.log(b);
+// . Пользователь вводит число, явдяющееся количеством элементов будущего
+// массива. Напишите код заполнения массива методом prompt. 
+const num = +prompt('input number');
+let arr = [];
+for (let i = 0; i < num; i++) {
+    let a = prompt('input str')
+    arr.push(a)
 }
-else { console.log(Math.round(b)) }
+console.log(arr);
+
