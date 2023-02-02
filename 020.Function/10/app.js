@@ -1,10 +1,22 @@
-// . Дан массив с элементами [1, 2, 2, 3, 4, 4, 3, 4, 5]. Выведите только уникальные
-// значения массива -> [1, 5] (for)
-
-const arr = [1, 2, 2, 3, 4, 4, 3, 4, 5].sort();
-let newArr = [];
-for (let i = 0; i < arr.length; i++) {
-    if (arr[i] !== arr[i + 1] && arr[i] !== arr[i - 1]) {
-        newArr.push(arr[i])
+// На входе n – количество элементов массива. Далее производится заполнение
+// массива с клавиатуры. Выведите массив строк из четност и нечетности, в
+// соответствии с тестом ниже:
+// [1, 2, 3, 4, 5, 6] -> [“нечет”, “чет”, “нечет”, “чет”, “нечет”, “чет”]
+// [1, 24, 5] -> [“нечет”, “чет”, “нечет”]
+// Использовать map
+const n = prompt('Input number of elements');
+let arr = [];
+let arrEvenUneven = [];
+for (let i = 0; i < n; i++) {
+    let a = prompt('Input element');
+    if (!isNaN(a)) {
+        arr.push(a);
     }
-} console.log(newArr);
+}
+const res = arr.map(function (el) {
+    if (el % 2 == 0) {
+        arrEvenUneven.push('чет')
+    } else arrEvenUneven.push('нечет')
+})
+console.log(arrEvenUneven);
+console.log(arr);
