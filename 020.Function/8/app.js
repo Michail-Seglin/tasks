@@ -8,18 +8,23 @@ for (let i = 0; i < n; i++) {
     arr.push(prompt());
 }
 
- const res = arr.every(function (el) {
-     if (!isNaN(el)){
+const res = arr.every(function (el) {
+    if (!isNaN(el)) {
         return true
     }
     else return false
 })
- console.log(res);
+console.log(res);
 
-// arr.forEach(function (el) {
-//     if (!arr[el]) {
-       
-//     }
+arr.forEach(function (el) {
+    if (!isNaN(el)) {
+        count++
+    }
 
-// })
-// console.log(true);
+})
+
+if (count === arr.length) {
+    console.log(true);
+} else {
+    console.log(false);
+}
