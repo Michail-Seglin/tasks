@@ -1,20 +1,17 @@
-// Пользователь вводит многозначное число. Необходимо вставить двоеточие
-// между двумя нечетными числами. Работать с числом как с массивом.
-// Использовать for
-// 55639217 -> 5:563:921:7.
-
-const num = '55639217'.split('');
+// .На входе n – количество элементов массива. Далее производится заполнение
+// массива с клавиатуры. Оставьте в нем только положительные числа. Filter
+const n = 5;
 let arr = [];
-for (let i = 0; i < num.length; i++) {
-    if (i == 0) {
-        arr.push(num[i])
-        continue
+for (let i = 0; i < n; i++) {
+    let a = prompt();
+    if (!isNaN(a)) {
+        arr.push(a)
     }
-    let lastEl = arr[arr.length - 1];
+}
 
-    if (num[i] % 2 !== 0 && lastEl % 2 !== 0) {
-        arr.push(':', num[i])
-        continue
-    }
-    arr.push(num[i])
-} console.log(arr.join(''));
+const res = arr.filter(function (el) {
+    if (el > 0) {
+        return true
+    } else { return false }
+})
+console.log(res);
