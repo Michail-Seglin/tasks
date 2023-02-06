@@ -1,24 +1,15 @@
-// На входе n – количество элементов массива. Далее производится заполнение
-// массива с клавиатуры. Выведите сумму всех элементов массива. Проверки на
-// ввод только чисел. Использовать forEach, reduce
-
-const n = prompt('Input numbers of elements');
-let arr = [];
-
-for (let i = 0; i < n; i++) {
-    let el = +prompt('Input element');
-
-    if (!isNaN(el)) {
-        arr.push(el)
+// На входе статичный объект. Необходимо посчитать количество пар (ключ:
+//     значение) где значение число и вывести количество 
+const obj = {
+    name: 'Misha',
+    age: 27,
+    year: 1996,
+    month: 2,
+    day: 9,
+};
+let count = 0;
+for (let key in obj) {
+    if (!isNaN(obj[key])) {
+        count++
     }
-}
-const res = arr.reduce(function (sum, el) {
-    return sum + el
-}, 0)
-console.log(res);
-
-let resFor = 0;
-const res1 = arr.forEach(function (el) {
-    resFor += el
-})
-console.log(resFor);
+} console.log(count);

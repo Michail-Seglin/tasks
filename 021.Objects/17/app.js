@@ -1,20 +1,22 @@
-// На входе n – количество элементов массива. Далее производится заполнение
-// массива с клавиатуры. Значения могут быть строкового либо числового типа
-// данных. Необходимо из этих элементов составить 2 массива: со строками и второй
-// массив, соответственно, с числами. forEach
-const n = 6;
-let arr = [];
-let arrN = [];
-let arrS = [];
-for (let i = 0; i < n; i++) {
-    let a = prompt('Input value');
-    arr.push(a);
+// Найти значение массива, повторяющееся в нем наибольшее количество раз
+const arr = [1, 1, 2, 3, 4, 5, 1, 1, 2, 3, 4, 1, 4, 5, 6, 7, 2, 3, 1, 2, 3, 2, 11, 22, 2, 2, 2, 34, 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'];
+let obj = {};
+let arrValue = [];
+let n0 = 0;
+let a = 0;
+for (let i = 0; i < arr.length; i++) {
+    n0 = 0;
+    arr.forEach(function (el) {
+        if (arr[i] == el) {
+            n0++
+        }
+    })
+    obj[arr[i]] = n0;
 }
-
-arr.forEach(function (el) {
-    if (isNaN(el)) {
-        arrS.push(el);
-    } else arrN.push(el);
-})
-
-console.log(arrN, arrS);
+for (let key in obj) {
+    arrValue.push(obj[key]);
+    if (obj[key] == Math.max(...arrValue)) {
+        a = key;
+    }
+ }
+console.log(a);
