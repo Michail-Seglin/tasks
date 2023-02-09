@@ -1,23 +1,10 @@
-// На входе пустой объект; n – количество элементов рандомно сгенерированного
-// массива. Необходимо заполнить пустой объект, где ключи – циклично
-// сгенерированная последовательность от 0 до n, значения – элемент рандомно
-// сгенерированного массива. Math.random()
-// 4 -> [34, 11, 43, 1] // 4 – n; элементы массива сгенерированы рандомно
-// {
-// 0 : 34,
-// 1 : 11,
-// 2 : 43,
-// 3 : 1
-// }
-const obj = {};
-const n = 5;
-let arr = [];
-for (let i = 0; i < n; i++) {
-    let a = Math.round(Math.random() * 10);
-    arr.push(a)
+// На входе строка. Необходимо создать функцию, возвращающую true, если это
+// слово анаграмма и false в противном случае
 
+const str = 'konus'.split('').sort();
+const str1 = 'sukno'.split('').sort();
+function isAnnagramma(str_, str1_) {
+        return str_.join('') == str1_.join('') ? true : false;
 }
-for (let i = 0; i < arr.length; i++) {
-    obj[i+1] = arr[i];
-}
-console.log(obj);
+const res = isAnnagramma(str, str1);
+console.log(res);

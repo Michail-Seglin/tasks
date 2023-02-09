@@ -1,38 +1,26 @@
-// На входе статичный объект с повторяющимися значениями. Необходимо
-// отфильтровать значения объекта и оставить только уникальные значения
-// { {
-// 1 : 1, 1 : 1,
-// 2 : 2, 2 : 2,
-// 3 : 2, 3 : 3,
-// 4 : 3, -> 4 : 4,
-// 5 : 4, 5 : 5
-// 6 : 4 }
-// 7 : 5
-// }
-
-const obj = {
-    0: 7,
-    1: 3,
-    2: 5,
-    3: 2,
-    4: 4,
-    5: 1,
-    6: 2,
-};
-let obj2 = {};
-let arr = [];
-for (let key in obj) {
-    arr.push(obj[key]);
-
+// На входе массив. Реализуйте 2 функции. Первая для проверки, что в массиве
+// только числа. Вторая для поиска максимального значения в массиве. Если
+// результат функции проверки – true, то вызывать новую функцию, возвращающую
+// максимальное значение массива
+const arr = [1, 2, 5, 7, -3, -6, 34];
+function isValid(arr_) {
+    const bool = arr.every((el) => !isNaN(el) ? true : false);
+    return bool;
 }
-arr = arr.sort();
-let uniq = [];
-for (let i = 0; i < arr.length; i++) {
-    if (!uniq.includes(arr[i])) {
-        uniq.push(arr[i])
+
+function searchMax(arr_) {
+    const bool = isValid(arr_);
+    if (bool === true) {
+        let ind = arr[0];
+        for (let i = 0; i < arr.length; i++) {
+            if (ind < arr[i]) {
+                ind = arr[i];
+            }
+        }
+        return ind
     }
-}
-for (let i = 0; i < uniq.length; i++) {
-    obj2[i] = uniq[i];
-}
-console.log(obj2);
+    return bool
+};
+
+const res = searchMax(arr);
+console.log(res);

@@ -1,14 +1,20 @@
-// На входе пустой объект. С клавиатуры вводятся 2 числа. Необходимо добавить в
-// объект ключ “avg” со значением среднего арифметического введенных с чисел
+// . На входе число. Необходимо создать функцию, возвращающую факториал числа
+// 4! = 1 * 2 * 3 * 4
+const num = 8;
 
-const obj = {
-    avg: 0,
-};
-const num1 = +prompt('Input number 1');
-const num2 = +prompt('Input number 2');
-if ((!isNaN(num1)) && (!isNaN(num2))) {
-    let res = (num1 + num2) / 2;
-    obj.avg = res;
-    console.log(obj);
-} else console.log('error input');
+function isValid(num_) {
+    return typeof (num_) == 'number' ? true : false;
+}
 
+
+function fact(num_) {
+    const bool = isValid(num_);
+    let count = 1;
+    if (bool === true) {
+        for (let i = 1; i <= num_; i++) {
+            count *= i;
+        } return count;
+    } else 'error';
+}
+const res = fact(num);
+console.log(res);
