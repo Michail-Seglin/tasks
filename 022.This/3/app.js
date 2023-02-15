@@ -1,13 +1,21 @@
-// Напишите функцию, которая принимает строку в маленьком регистре и
-// возаращает строку, где каждое слово начинается с большого регистра
-// hschool company -> Hschool Company
-const str = 'hschool company'.split(' ');
-function showResult(str_) {
-    let strUP = '';
-    for (let i = 0; i < str_.length; i++) {
-        strUP += str_[i][0].toUpperCase() + str_[i].slice(1) + ' ';
+// Напишите функцию, которая принимает почту и возвращает объект, вида
+// {
+// email,
+// active: true / false
+// }
+// true, если почта содержит @, .com / .ru. False в противном случае
+let email = 'misha@.com'
+function doEmail(email_) {
+    let obj = {};
+    if (email_.includes('@') && (email_.includes('.ru') || email_.includes('.com'))) {
+        obj.email = email_;
+        obj.active = true
+    } else {
+        obj.email = email_
+        obj.active = false
     }
-    return strUP;
-}
-let result = showResult(str);
-console.log(result);
+    return obj;
+};
+
+let res = doEmail(email);
+console.log(res);

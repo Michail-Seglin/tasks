@@ -1,16 +1,28 @@
-// Напишите функцию, которая принимает статичный массив строк. Необходимо
-// отфильтровать значения и оставить только те, где длина строк до 2 символов.
-// [“by”, “belarus”, “de”, “ru”, “germany”] -> [“by”, “de”, “ru”]
-
-const arr = ['by', 'belarus', 'de', 'ru', 'germany'];
-
-function showResult(arr_) {
-    const res = arr_.filter(function (el) {
-        if (el.length <= 2) {
-            return el
+// Напишите функцию, которая принимает массив чисел и находит минимальное и
+// максимальное числа соответственно. Добавить проверки на ввод и если значения
+// массива не соответствуют условию задания, вывести сообщение об ошибке. 
+let n = 5;
+let arr = [];
+for (let i = 0; i < n; i++) {
+    let a = +prompt('Input number');
+    if (!isNaN(a)) {
+        arr.push(a);
+    } else console.log('error input');
+};
+function minMax(arr_) {
+    let minN = 0;
+    let maxN = 0;
+    for (let i = 0; i < arr_.length; i++)
+        if (arr[i] < minN) {
+            minN = arr[i];
         }
-    })
-    return res;
-}
-let result = showResult(arr);
-console.log(result);
+
+    for (let i = 0; i < arr_.length; i++)
+        if (arr[i] > maxN) {
+            maxN = arr[i];
+        }
+
+    return maxN, minN;
+};
+let res = minMax(arr);
+console.log(res);
