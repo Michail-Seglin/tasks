@@ -1,20 +1,19 @@
-// . На входе число. Необходимо создать функцию, возвращающую факториал числа
-// 4! = 1 * 2 * 3 * 4
-const num = 8;
-
-function isValid(num_) {
-    return typeof (num_) == 'number' ? true : false;
-}
-
-
-function fact(num_) {
-    const bool = isValid(num_);
-    let count = 1;
-    if (bool === true) {
-        for (let i = 1; i <= num_; i++) {
-            count *= i;
-        } return count;
-    } else 'error';
-}
-const res = fact(num);
-console.log(res);
+// Напишите функцию, принимающую в качестве параметра статичный объект.
+// Функция возвращает новый объект, где значения – исключительно числа
+// первоначального объекта. IIFE
+const obj = {
+    1: 'misha',
+    2: 232,
+    3: 'seg',
+    4: 'bmw',
+    5: 2323
+};
+(function (obj_) {
+    let newObj = {};
+    for (let key in obj_) {
+        if (!isNaN(obj_[key])) {
+            newObj[key] = obj[key]
+        }
+    }
+    console.log(newObj);
+})(obj);

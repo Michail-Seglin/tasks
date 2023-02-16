@@ -1,10 +1,14 @@
-// На входе строка. Необходимо создать функцию, возвращающую true, если это
-// слово палиндром и false в противном случае
-const str = 'anna';
+// Работа с замыканием. Напишите функцию, каждый вызов который будет
+// генерировать случайные числа от 1 до 100
 
-function pol(str_) {
-    const strRevers = str_.split('').reverse();
-    strRevers === str_ ? true : false;
+function randomNum() {
+    return function () {
+        console.log(Math.floor(Math.random() * 100));
+    }
 }
-let res = pol(str);
-console.log(res);
+const res = randomNum();
+res()
+res()
+res()
+res()
+res()

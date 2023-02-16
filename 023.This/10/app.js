@@ -1,21 +1,17 @@
-// На входе массив. Реализуйте 2 функции. Первая для проверки, что в массиве
-// только числа. Вторая для получения только четных элементов массива. Если
-// результат функции проверки – true, то вызывать новую функцию, возвращающую
-// массив с четными элементами массива
-const arr = [1, 2, 3, 4, 5, ' '];
+// Напишите функцию, которая принимает два параметра: строку и букву. Функция
+// должна подсчитывать количество вхождений указанной буквы в строке. Добавить
+// проверки
+const str = 'hello Misha';
 
-function isValid(arr_) {
-    const bool = arr_.every((el) => typeof el == 'number' ? true : false)
-    return bool
+function findLetter(str_) {
+    let letter = '1';
+    let count = 0;
+    for (let i = 0; i < str_.length; i++) {
+        if (str[i] === letter) {
+            count++
+        }
+    }
+    return count
 };
-
-function filterArr(arr_) {
-    const bool = isValid(arr_);
-    if (bool == true) {
-        const res = arr_.filter((el) => el % 2 == 0 ? true : false)
-        return res
-    } else { return 'error' }
-};
-
-const result = filterArr(arr);
-console.log(result);
+let res = findLetter(str);
+console.log(res);

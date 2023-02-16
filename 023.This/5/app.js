@@ -1,19 +1,8 @@
-// На входе массив. Необходимо создать функцию проверки на то что в массиве
-// только числа. Функция возвращает true, если в массиве только числа и false в
-// противном случае
-const arr = [1, 2, 4, 6];
-function showResult(arr_) {
-    let count = 0;
-    for (let i = 0; i < arr_.length; i++) {
-        if (!isNaN(arr_[i])) {
-            continue;
-        } else {
-            count += 1;
-        }
-    }
-    if (count > 0) {
-        return false;
-    } else return true;
+// На входе строка в виде пароля. Необходимо написать функцию на проверку, что
+// пароль является надежным (содержит хотя бы 1 букву в большом регистре, числа,
+// буквы, символ, длина не менее 8 символов)
+const str = 's1t#23dvd';
+
+if (str.toLowerCase() !== str) {
+    console.log(true);
 }
-let result = showResult(arr);
-console.log(result);

@@ -1,15 +1,26 @@
-// На входе статичный объект. Необходимо посчитать количество пар (ключ:
-//     значение) где значение число и вывести количество 
-const obj = {
-    name: 'Misha',
-    age: 27,
-    year: 1996,
-    month: 2,
-    day: 9,
+// На входе динамичный массив; число n с клавиатуры. Необходимо написать
+// функцию, возвращающую элементы массива, которые больше указанного числа.
+// [1, 9, 45, 11, 10], 10 -> 45, 11
+
+function doArray() {
+    let arr = [];
+    for (let i = 0; i < 5; i++) {
+        arr.push(prompt())
+    } 
+    return arr
 };
-let count = 0;
-for (let key in obj) {
-    if (!isNaN(obj[key])) {
-        count++
+
+function arrCallback(arr_) {
+    let n = 10;
+    let arrNew = [];
+    for (let i = 0; i < arr_.length; i++) {
+        if (arr_[i] > n) {
+            arrNew.push(arr_[i])
+        }
     }
-} console.log(count);
+    return arrNew
+};
+let arr = doArray();
+let res = arrCallback(arr);
+
+console.log(res);
