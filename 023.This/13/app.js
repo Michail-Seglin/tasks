@@ -1,10 +1,20 @@
-// На входе строка. Необходимо создать функцию, возвращающую true, если это
-// слово анаграмма и false в противном случае
+// Напишите функцию, принимающую в качестве параметра статичный объект.
+// Функция возвращает количество пар ключ / значение. IIFE
+const obj = {
+        1: 'misha',
+        2: 232,
+        3: 'seg',
+        4: 'bmw',
+        5: 2323
+};
+(function (obj_) {
+        let res = 0;
+        for (let key in obj_) {
+                {
+                        if (obj_[key]) {
+                                res++
+                        }
+                }
+        } return console.log(res);
+})(obj);
 
-const str = 'konus'.split('').sort();
-const str1 = 'sukno'.split('').sort();
-function isAnnagramma(str_, str1_) {
-        return str_.join('') == str1_.join('') ? true : false;
-}
-const res = isAnnagramma(str, str1);
-console.log(res);
