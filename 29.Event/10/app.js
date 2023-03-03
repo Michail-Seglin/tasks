@@ -1,17 +1,7 @@
-// Напишите функцию, которая принимает два параметра: строку и букву. Функция
-// должна подсчитывать количество вхождений указанной буквы в строке. Добавить
-// проверки
-const str = 'hello Misha';
+// const btn2 = document.querySelector('bt1');
+const btn1 = document.querySelector('button .bt2');
 
-function findLetter(str_) {
-    let letter = '1';
-    let count = 0;
-    for (let i = 0; i < str_.length; i++) {
-        if (str[i] === letter) {
-            count++
-        }
-    }
-    return count
-};
-let res = findLetter(str);
-console.log(res);
+btn1.addEventListener('click', function () {
+    let inp = document.querySelector('input');
+    inp.disabled = true;
+})

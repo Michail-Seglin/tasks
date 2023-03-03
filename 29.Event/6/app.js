@@ -11,5 +11,4 @@ btn.addEventListener('click', function () {
         inp.value = '???'
         flag = false
     }
-
 })
