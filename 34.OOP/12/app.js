@@ -1,14 +1,23 @@
-// Работа с замыканием. Напишите функцию, каждый вызов который будет
-// генерировать случайные числа от 1 до 100
+// 12. Реализуйте класс Hashtag. В него передается число n – количество элементов
+// массива. На основании числа формируется динамический массив из n элементов
+// внутри класса. Создать функцию doHashtag, заполняющую новый массив из
+// элементов, каждое значение которого имеет вид #name
 
-function randomNum() {
-    return function () {
-        console.log(Math.floor(Math.random() * 100));
+class Hashtag {
+    n;
+    doHashtag(n) {
+        try {
+            let arr = [];
+            for (let i = 0; i < n; i++) {
+                // a = prompt('Введите значение');
+                arr.push(`#` + prompt());
+
+            } return arr
+        } catch (er) {
+            return er.message
+        }
     }
 }
-const res = randomNum();
-res()
-res()
-res()
-res()
-res()
+const hashtag = new Hashtag();
+const res = hashtag.doHashtag(5)
+console.log(res);
