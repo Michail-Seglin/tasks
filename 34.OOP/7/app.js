@@ -1,21 +1,57 @@
-// Возле дороги стоят столбы. Расстояние между столбами одинаковое и ширина
-// столбов одинаковая. По условию задачи даны 3 инпута и кнопка. По клику на
-// кнопку вызывается функция, принимающая три параметра: количество столбов
-// (≥ 1); расстояние между столбами (10 – 30 метров); ширина столба (10 – 50
-// сантиметров). Рассчитайте расстояние между первым и последним столбом в
-// сантиметрах
+// 7. Реализуйте класс ServerById. Обязательными функциями считаются функции
+// middleware, controller, service, repository. Цепочка взаимодействия между
+// методами следующая:
+// middleware -> controller -> service -> repository, где:
+// middleware – функция валидатор
+// controller – функция, принимающая данные. Принимает json
+// service – функция проверки на то что с repository вернулось значение
+// repository – функция, симулирующая БД. Хранит массив данных. Взаимодействие с
+// этим массивом осуществляется только в repository. Массив находится в
+// приложении
+// Задание:
+// на вход подается JSON вида:
+// `{
+// "id": "javascript"
+// }`
+// Необходимо вывести в консоль найденный элемент массива по id если таковой
+// имеется. В противном случае бросить исключение. Добавить проверки 
+class ServerById {
 
+    controller(obj) {
+        try {
+            const ser = this.service(obj)
+            return ser
+        } catch (er) {
+            return er.message
+        }
 
+    }
 
-document.querySelector('button').addEventListener('click', function () {
-    const pillarCounts = document.querySelector('.pillar-counts');
-    const pillarDistance = document.querySelector('.pillar-distance');
-    const pillarWidth = document.querySelector('.pillar-width');
-    const div = document.querySelector('div');
+    service(obj) {
+        const rep = this.repository(obj)
+        return rep
 
-    div.innerHTML = doWidth(pillarCounts.value, pillarDistance.value, pillarWidth, value);
-});
-function doWidth(pillarCounts_, pillarDistance_, pillarWidth_) {
-    let result = pillarCounts_ * pillarWidth_ + (pillarCounts_ - 1) * 100 * pillarDistance_;
-    return result
+    }
+
+    repository(obj) {
+
+        const arr = [
+            { "id": "javascript", "label": "JavaScript", "category": "programmingLanguages", "priority": 1 },
+            { "id": "typescript", "label": "TypeScript", "category": "programmingLanguages", "priority": 1 },
+            { "id": "sql", "label": "SQL", "category": "programmingLanguages", "priority": 2 },
+            { "id": "java", "label": "Java", "category": "programmingLanguages", "priority": 3 },
+            { "id": "go", "label": "GO", "category": "programmingLanguages", "priority": 3 }
+        ]
+        const filt = arr.filter((el) => (el.id === obj.id ? true : null));
+
+        return filt
+    }
 }
+
+let obj = {
+    id: "javascript",
+};
+const serverById = new ServerById()
+
+let res = serverById.controller(obj);
+console.log(res);

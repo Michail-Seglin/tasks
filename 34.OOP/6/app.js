@@ -1,23 +1,46 @@
-// 6. На входе объект. Ключи и значения - автоинкремент (генерируется автоматически
-//     от 1 до n). Необходимо отобразить на экране объект (помните, что окно браузера
-//     не воспринимает объекты как тип данных JavaScript. Для отображения неоходимо
-//     преобразовать строку в ...)
+// 6. Реализуйте класс ServerGetAll. Обязательными функциями считаются функции
+// controller, service, repository. Цепочка взаимодействия между методами
+// следующая:
+// controller -> service -> repository, где:
+// controller – функция, принимающая данные. Принимает json
+// service – функция проверки на то что с repository вернулось значение
+// repository – функция, симулирующая БД. Хранит массив данных. Взаимодействие с
+// этим массивом осуществляется только в repository. Массив находится в
+// приложении
+// Задание:
+// Необходимо вывести в консоль весь массив
 
-const btn = document.querySelector('button');
+class ServerGetAll {
 
-btn.addEventListener('click', function () {
-    try {
-        const inp = document.querySelector('input')
-        const object = document.querySelector('.object')
-
-        const inpNum = +inp.value.trim();
-        if (isNaN(inpNum)) throw new Error('not number');
-        let obj = {};
-        for (let i = 0; i < inpNum; i++) {
-            obj[i] = i;
+    controller() {
+        try {
+            const ser = this.service()
+            return ser
+        } catch (er) {
+            return er.message
         }
-        object.innerHTML = JSON.stringify(obj);
-    } catch (error) {
-        alert(error.message)
+
     }
-})
+
+    service() {
+        const rep = this.repository()
+        return rep
+
+    }
+
+    repository() {
+
+        const arr = [
+            { "id": "javascript", "label": "JavaScript", "category": "programmingLanguages", "priority": 1 },
+            { "id": "typescript", "label": "TypeScript", "category": "programmingLanguages", "priority": 1 },
+            { "id": "sql", "label": "SQL", "category": "programmingLanguages", "priority": 2 },
+            { "id": "java", "label": "Java", "category": "programmingLanguages", "priority": 3 },
+            { "id": "go", "label": "GO", "category": "programmingLanguages", "priority": 3 }
+        ]
+        return arr
+    }
+}
+
+const serverGetAll = new ServerGetAll();
+const res = serverGetAll.controller();
+console.log(res);

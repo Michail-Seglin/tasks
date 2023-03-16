@@ -1,32 +1,52 @@
-// 1. По условию задачи даны инпут и кнопка. Пользователь вводит в инпут значения и
-// по нажатию на кнопку формирует массив. Необходимо вывести среднее значение
-// этого массива
-const btn = document.querySelector('button');
-let arr = [];
+// 1. Реализуйте класс Singer, который будет иметь следующие свойства: name,
+// surname. Также класс должен иметь метод getAutograph, который будет выводить
+// “{name} {surname), с наилучшими пожеланиями”. 
 
-function isValid(inp) {
-    if (inp.value.trim() === '') throw new Error('empty');
-    if (isNaN(inp.value)) throw new Error('not number')
-}
-btn.addEventListener('click', function () {
-    try {
-        let inp = document.querySelector('input');
-        let div = document.querySelector('.array');
-        let divAvg = document.querySelector('.avg');
+// class Singer {
+//     name;
+//     surname;
+//     getAutograph() {
+//         try {
+//             return `${this.name} ${this.surname} , с наилучшими пожеланиями`;
+//         } catch (er) {
+//             return er.message
+//         }
+//     }
+// }
+// const singer = new Singer();
+// singer.name = 'Misha';
+// singer.surname = 'Seglin';
+// const res = singer.getAutograph();
+// console.log(res);
 
-        isValid(inp)
+// class Singer {
+//     constructor(name, surname) {
+//         this.name = name;
+//         this.surname = surname;
+//     }
+//     getAutograph() {
+//         try {
+//             return `${this.name} ${this.surname} , с наилучшими пожеланиями`
+//         } catch (er) {
+//             return er.message
+//         }
+//     }
+// }
+// const singer = new Singer('Misha', 'Seglin');
+// const res = singer.getAutograph();
+// console.log(res);
 
-        arr.push(inp.value);
-        div.innerHTML = arr;
+class Singer {
 
-        let sum = 0;
-        for (let i = 0; i < arr.length; i++) {
-            sum += +arr[i];
+    getAutograph(name, surname) {
+        try {
+            return `${name} ${surname}, с наилучшими пожеланиями`
+        } catch (er) {
+            return er.message
         }
-        divAvg.innerHTML = sum / arr.length
 
-        inp.value = '';
-    } catch (error) {
-        alert(error.message)
     }
-})
+}
+const singer = new Singer();
+const res = singer.getAutograph('Misha', 'Seglin');
+console.log(res);
