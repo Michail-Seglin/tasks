@@ -40,7 +40,7 @@ class Validator {
 
     isPhone(phone) {
         try {
-            if (!/^[0-3]?[0-9].[0-3]?[0-9].(?:[0-9]{2})?[0-9]{2}$/gm.test(url)) throw new Error('Некорректная Дата');
+            if (!/^[0-3]?[0-9].[0-3]?[0-9].(?:[0-9]{2})?[0-9]{2}$/gm.test(url)) throw new Error('Некорректный телефон');
             return true
         } catch (er) {
             return er.message
@@ -57,5 +57,5 @@ console.log(url);
 
 const date = validator.isDate('20.1.2023');
 console.log(date);
-const phone = validator.isPhone('+375297654842')
+const phone = validator.isPhone('375297654842')
 console.log(phone); 
