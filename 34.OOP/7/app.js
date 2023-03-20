@@ -17,23 +17,23 @@
 // имеется. В противном случае бросить исключение. Добавить проверки 
 class ServerById {
 
-    controller(obj) {
+    controller(clientData) {
         try {
-            const ser = this.service(obj)
-            return ser
+            const data = this.service(clientData)
+            return data
         } catch (er) {
             return er.message
         }
 
     }
 
-    service(obj) {
-        const rep = this.repository(obj)
-        return rep
-
+    service(clientData) {
+        const data = this.repository(clientData)
+        if (!data.length) throw new Error('нет совпадений')
+        return data
     }
 
-    repository(obj) {
+    repository(clientData) {
 
         const arr = [
             { "id": "javascript", "label": "JavaScript", "category": "programmingLanguages", "priority": 1 },
@@ -42,16 +42,13 @@ class ServerById {
             { "id": "java", "label": "Java", "category": "programmingLanguages", "priority": 3 },
             { "id": "go", "label": "GO", "category": "programmingLanguages", "priority": 3 }
         ]
-        const filt = arr.filter((el) => (el.id === obj.id ? true : null));
+        const filtered = arr.filter((el) => (el.id === clientData.id ? true : null));
 
-        return filt
+        return filtered
     }
 }
-
-let obj = {
-    id: "javascript",
-};
+const clientData = {id: "javascript",}
 const serverById = new ServerById()
 
-let res = serverById.controller(obj);
-console.log(res);
+const response = serverById.controller(clientData);
+console.log(response);
