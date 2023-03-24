@@ -1,57 +1,56 @@
-// 4. Реализуйте класс ServerById. Обязательными функциями считаются функции
-// middleware, controller, service, repository. Цепочка взаимодействия между
-// методами следующая:
-// middleware -> controller -> service -> repository, где:
-// middleware – функция валидатор
-// controller – функция, принимающая данные. Принимает json
-// service – функция проверки на то что с repository вернулось значение
-// repository – функция, симулирующая БД. Хранит массив данных. Взаимодействие с
-// этим массивом осуществляется только в repository. Массив находится в
-// приложении
-// Задание:
-// на вход подается JSON вида:
-// `{
-// "id": 1
-// }`
-// Необходимо вывести в консоль найденный элемент массива по id если таковой
-// имеется. В противном случае бросить исключение. Добавить проверки
-class ServerById {
-    middleware(obj) {
-        if (!obj.hasOwnProperty('id')) throw new Error('Нет поля id')
-        if (isNaN(obj.id)) throw new Error("Ошибка")
-    }
+// 2. Классы Person и Customer. Напишите класс Person с атрибутами данных для
+// имени, адреса и телефонного номера человека. Затем напишите класс Customer
+// (Клиент), который является подклассом класса Person. Класс Customer должен
+// иметь поле для номера клиента и атрибут булевых данных,
+// указывающий, хочет ли клиент быть в списке рассылки или нет.
+// Продемонстрируйте экземпляр класса Customer в простой программе
 
-    controller(obj) {
-        try {
-            this.middleware(obj)
-            const ser = this.service(obj);
-            return ser
-        } catch (er) {
-            return er.message
-        }
-    }
+class Person {
+    name;
+    addres;
+    phone;
 
-    service(obj) {
-        const rep = this.repository(obj);
-        return rep
-    }
+    getName = () => { return this.name };
+    getAddres = () => { return this.addres };
+    getPhone = () => { return this.phone };
 
-    repository(obj) {
-        const arr = [
-            { "id": 1, "name": "Yesenia", "age": 22 },
-            { "id": 2, "name": "Hanna", "age": 22 },
-            { "id": 3, "name": "Stanislau", "age": 25 },
-            { "id": 4, "name": "German", "age": 18 },
-            { "id": 5, "name": "Maria", "age": 27 }
-        ]
-        const filtered = arr.filter((el) => el.id === obj.id)
-        return filtered
-    }
+    setName = (name) =>
+        this.name = name;
+
+    setAddres = (addres) =>
+        this.addres = addres;
+    setPhone = (phone) =>
+        this.phone = phone;
+
+
+
+}
+class Customer extends Person {
+    phoneCustomer;
+    bool;
+
+    getPhoneCustomer = () => { return this.phoneCustomer };
+    getBool = () => { return this.bool };
+
+    setPhoneCustomer = (phoneCustomer) =>
+        this.phoneCustomer = phoneCustomer;
+    setBool = (bool) =>
+        this.bool = bool;
 
 }
 
-const obj = JSON.parse(`{"id": 1}`)
+const customer = new Customer();
 
-const serverById = new ServerById();
-const res = serverById.controller(obj);
-console.log(res);
+
+customer.setName('Vasya Pupkin');
+customer.setAddres('Minsk');
+customer.setPhone('+375333333333');
+customer.setBool(true);
+customer.setPhoneCustomer(123);
+
+const name = customer.getName();
+const addres = customer.getAddres();
+const phone = customer.getPhone();
+const bool = customer.getBool();
+const phoneCustomer = customer.getPhoneCustomer();
+console.log(name, addres, phone, bool, phoneCustomer);
