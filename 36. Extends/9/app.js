@@ -1,32 +1,25 @@
-// Реализуйте класс Validator. У него будет метод isEmail параметром принимает
-// строку и проверяет, является ли она корректным емейлом или нет. Если является
-// - возвращает true, если не является - то false.
-// Дополнить класс Validator. Добавить метод isURL для проверки на url.
+// 4. Реализуйте класс Word, и функцию isAnagram которая будет выводить в alert
+// соответствующее будевое значение. Если значения 2 инпутов являются
+// анаграммами -> true, в противном случае false 
+class Word {
 
-class Validator {
-    str;
-    url;
 
-    isMail(str) {
-        try {
-            if (!/^[\w\.\-]+@[a-z]{1,10}\.(by|com)$/gm.test(str)) throw new Error('Невалидный EMAIL');
-            return true
-        } catch (er) {
-            return er.message
-        }
+    checkEvent() {
+        document.querySelector('button').addEventListener('click', () => {
+            const inp1 = document.querySelector('.inp1');
+            const inp2 = document.querySelector('.inp2');
+            this.isAnagram(inp1.value, inp2.value)
+        })
     }
-    isURL(url) {
+    isAnagram(inp1, inp2) {
         try {
-            if (!/^[a-z]+:\/\/[a-zA-Z0-9]+\.[a-z]+\.[a-z]{1,3}$/gm.test(url)) throw new Error('Некорректный URL');
-            return true
+            const word1 = inp1.split('').sort().join('');
+            const word2 = inp2.split('').sort().join('');
+            inp1 === inp2 ? alert(true) : alert(false);
         } catch (er) {
-            return er.message
+            alert(er.message);
         }
     }
 }
-const validator = new Validator();
-const email = validator.isMail('misha_hp@tut.by');
-console.log(email);
-
-const url = validator.isURL('https://www.onliner.by')
-console.log(url);
+const word = new Word();
+word.isAnagram();

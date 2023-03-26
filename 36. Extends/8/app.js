@@ -1,44 +1,29 @@
-// 5. Реализуйте класс ServerPost. Обязательными функциями считаются функции
-// middleware, controller, service, repository. Цепочка взаимодействия между методами
-// следующая:
-// middleware -> controller -> service -> repository, где:
-// middleware – функция валидатор
-// controller – функция, принимающая данные. Принимает json
-// service – функция проверки на то что с repository вернулось значение
-// repository – функция, симулирующая БД. Хранит массив данных. Взаимодействие с
-// этим массивом осуществляется только в repository. Массив находится в приложении
-// Задание:
-// на вход подается JSON вида:
-// `{
-// "name": "Test", "age": 1
-// }`
-// Необходимо добавить в массив БД объект только в том случае, если нет совпадений
-// по name. Если совпадения нет, то в объект клиента добавить ключ id с последним
-// возможным уникальным id БД, таким образом, чтобы в БД был запушен объект вида
-// {"id": 6, "name": "Test", "age": 1}
-// Если совпадение есть – ошибка. Добавить проверки
-class ServerPost {
-    middleware() {
+// есть два класса Main и Child. Класс Main содержит в себе функцию generateRandomElem, генерирующую массив из случайных 5-ти элементов.
+// класс Child содержит метод doMultiply который находит произведение случайно сгенерированных элементов массива.
+// Задание
+// из экземпляра класса Child вызвать метод doMultiply находящий произведение случайных элементов.
 
-    }
 
-    controller() {
-
-    }
-
-    service() {
-
-    }
-
-    repository() {
-        const arr = [
-            { "id": 1, "name": 'Yesenia', "age": 22 },
-            { 'id': 2, 'name': 'Hanna', "age": 22 },
-            { "id": 3, "name": "Stanislau", "age": 25 },
-            { "id": 4, "name": "German", "age": 18 },
-            { "id": 5, "name": "Maria", "age": 27 }
-        ]
+class Main {
+    generateRandomElem() {
+        let arr = [];
+        for (let i = 0; i < 5; i++) {
+            arr.push(Math.round(Math.random() * 10));
+        }
+        return arr;
     }
 }
-const obj = JSON.parse(`{ "name": "Test", "age": 1}`);
-const serverPost = new ServerPost();
+class Child extends Main {
+    doMultiply() {
+
+        let randomEl = this.generateRandomElem();
+
+        let res = randomEl.reduce((multi, el) => el * multi, 1)
+        return res;
+    }
+
+}
+
+const child = new Child();
+let out = child.doMultiply();
+console.log(out);

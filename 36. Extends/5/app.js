@@ -1,63 +1,27 @@
-// 5. Реализуйте класс ServerPost. Обязательными функциями считаются функции
-// middleware, controller, service, repository. Цепочка взаимодействия между методами
-// следующая:
-// middleware -> controller -> service -> repository, где:
-// middleware – функция валидатор
-// controller – функция, принимающая данные. Принимает json
-// service – функция проверки на то что с repository вернулось значение
-// repository – функция, симулирующая БД. Хранит массив данных. Взаимодействие с
-// этим массивом осуществляется только в repository. Массив находится в приложении
-// Задание:
-// на вход подается JSON вида:
-// `{
-// "name": "Test", "age": 1
-// }`
-// Необходимо добавить в массив БД объект только в том случае, если нет совпадений
-// по name. Если совпадения нет, то в объект клиента добавить ключ id с последним
-// возможным уникальным id БД, таким образом, чтобы в БД был запушен объект вида
-// {"id": 6, "name": "Test", "age": 1}
-// Если совпадение есть – ошибка. Добавить проверки 
+// 1. Реализуйте класс Client, содержащий метод sendRequest. Ваша задача получить
+// данные из 2 инпутов: почта и пароль и по клику на кнопку «отправить запрос на
+// сервер» (отправку запроса мы не проходили => просто вывести на экран
+// образовавщийся объект вида: {email: email, pwd: pwd}
 
-class ServerPost {
-    middleware(data) {
-        if (!data.hasOwnProperty('name') || !data.hasOwnProperty('age')) throw new Error('Incorrect Object')
-
-        if (!isNaN(data.name)) throw new Error('Object name is number')
-        if (isNaN(data.age)) throw new Error('Object age is letter')
-
+class Client {
+    isValid(inp1, inp2) {
+        if (!/^[a-zA-Z0-9\_\.]+\@+[a-z]+\.+[a-z]+$/gm.test(inp1)) throw new Error('Недопустимя почта');
+        if (inp2.length < 8) throw new Error('Пароль должен содержать не менее 8 символов')
     }
-
-    controller(data) {
-        try {
-            const ser = this.service(data);
-            this.middleware(data);
-            return ser
-        } catch (er) {
-            return er.message
-        }
-    }
-
-    service(data) {
-        const rep = this.repository(data);
-        return rep
-    }
-
-    repository(data) {
-        const arr = [
-            { "id": 1, "name": "Yesenia", "age": 22 },
-            { "id": 2, "name": "Hanna", "age": 22 },
-            { "id": 3, "name": "Stanislau", "age": 25 },
-            { "id": 4, "name": "German", "age": 18 },
-            { "id": 5, "name": "Maria", "age": 27 }
-        ]
-        const filtered = arr.filter((el) => el.name == data.name)
-        if (filtered.length > 0) throw new Error('есть совпадения')
-        arr.push({ id: (arr.length + 1), ...data })
-        return arr
+    sendRequest() {
+        document.querySelector('button').addEventListener('click', () => {
+            try {
+                const inp1 = document.querySelector('.inp1');
+                const inp2 = document.querySelector('.inp2');
+                const div = document.querySelector('div');
+                this.isValid(inp1.value, inp2.value);
+                div.innerHTML = JSON.stringify({ email: inp1.value, pwd: inp2.value });
+            } catch (er) {
+                alert(er.message)
+            }
+        })
     }
 }
-const data = JSON.parse(`{"name": "Yesenia", "age": 1 }`);
 
-const serverPost = new ServerPost();
-const response = serverPost.controller(data);
-console.log(response);
+const client = new Client();
+client.sendRequest();
