@@ -1,35 +1,29 @@
-// На входе n – количество элементов массива. Далее производится заполнение
-// массива с клавиатуры. Реализуйте 3 функции. Первая для формирования массива.
-// Вторая для проверки, что в массиве только числа. Третья для получения
-// произведения всех элементов массива. Если результат функции проверки – true,
-// то вызывать новую функцию, возвращающую произведение всех элементов
-// массива
+// 15. Полиморфизм. Реализуйте класс NumberArray. NumberArray хранит функцию
+// multArr, которая заполняет и возвращает массив из 5 рандомных элементов. Класс
+// ConsoleArray является производным по отношению к базовому, родительскому
+// NumberArray и содержит функцию multArr. Необходимо переопределить multArr
+// из базового класса записав в переменную используя метод super. Далее посчитать
+// произведение всех элементов массива используя reduce
 
-const num = 3;
+class NumberArray {
 
-function isValid(arr_) {
-    let res = arr_.every((el) => typeof el === 'number' ? true : false);
-    return res
-};
-
-
-function doArr(num_) {
-
-    let arr = []
-    for (let i = 0; i < num; i++) {
-        let a = +prompt('Введите элемент массива')
-        arr.push(a);
+    multArr() {
+        const arr = [];
+        for (let i = 0; i < 5; i++) {
+            arr.push(Math.round(Math.random() * 10))
+        }
+        return arr
     }
-    return arr;
+}
+class ConsoleArray extends NumberArray {
+    multArr() {
+        const arrN = super.multArr();
+        const res = arrN.reduce((sum, el) => sum * el, 1);
+        return res
+    }
 }
 
-function multiply(arr_) {
-    let valid = isValid(arr_)
-    if (valid === true) {
-        let res = arr_.reduce((sum, el) => sum * el, 1);
-        return res;
-    } else return 'error'
-};
-let arr = doArr(num);
-let res = multiply(arr);
-console.log(res);
+
+const consoleArray = new ConsoleArray();
+const response = consoleArray.multArr();
+console.log(response);
