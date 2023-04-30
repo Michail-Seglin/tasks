@@ -1,47 +1,72 @@
-// Реализуйте класс Validator. У него будет метод isEmail параметром принимает
-// строку и проверяет, является ли она корректным емейлом или нет. Если является
-// - возвращает true, если не является - то false.
-// Дополнить класс Validator. Добавить метод isURL для проверки на url.
-// Дополнить класс Validator. Добавить метод isDate для проверки на дату.
-class Validator {
-    str;
-    url;
-    date;
+const play = document.querySelector('.play');
+const left = document.querySelector('.left');
+const right = document.querySelector('.right');
+const audio = document.querySelector('audio');
+const artist = document.querySelector('.artist');
+const songName = document.querySelector('.nameOfSong');
+const songImg = document.querySelector('.songImg');
+let flag = false;
 
-    isMail(str) {
-        try {
-            if (!/^[\w\.\-]+@[a-z]{1,10}\.(by|com)$/gm.test(str)) throw new Error('Невалидный EMAIL');
-            return true
-        } catch (er) {
-            return er.message
-        }
+const songs = [{
+    id: 1,
+    path: './rington_1.mp3',
+    artist: 'ladygaga',
+    nameOfSong: 'rington_1',
+    impPath: 'background-image: url(./assets/img1.jpg)'
+},
+{
+    id: 2,
+    path: './rington_2.mp3',
+    artist: 'RAM',
+    nameOfSong: 'rington_2',
+    impPath: 'background-image: url(./assets/img2.jpg)'
+},
+{
+    id: 3,
+    path: './rington_3.mp3',
+    artist: 'LCP',
+    nameOfSong: 'rington_3',
+    impPath: 'background-image: url(./assets/img3.jpg)'
+},]
+
+let currentIndexSong = 0;
+play.addEventListener('click', function () {
+    audio.src = songs[currentIndexSong].path;
+    artist.textContent = songs[currentIndexSong].artist;
+    songName.textContent = songs[currentIndexSong].nameOfSong;
+    songImg.style= songs[currentIndexSong].impPath;
+    if (flag == false) {
+        audio.play();
+
+        flag = true;
+        this.style = 'background-image: url(./assets/pause.svg);'
+    } else {
+        audio.pause();
+        flag = false;
+        this.style = 'background-image: url(./assets/playBtn.svg);'
     }
+    ;
+})
 
-    isURL(url) {
-        try {
-            if (!/^[a-z]+:\/\/[a-zA-Z0-9]+\.[a-z]+\.[a-z]{1,3}$/gm.test(url)) throw new Error('Некорректный URL');
-            return true
-        } catch (er) {
-            return er.message
-        }
-    }
-
-    isDate(date) {
-        try {
-            if (!/^[0-3]?[0-9].[0-3]?[0-9].(?:[0-9]{2})?[0-9]{2}$/gm.test(url)) throw new Error('Некорректная Дата');
-            return true
-        } catch (er) {
-            return er.message
-        }
-    }
-}
-const validator = new Validator();
-
-const email = validator.isMail('misha_hp@tut.by');
-console.log(email);
-
-const url = validator.isURL('https://www.onliner.by')
-console.log(url);
-
-const date = validator.isDate('20.1.2023');
-console.log(date);
+left.addEventListener('click', function () {
+    if (currentIndexSong == 0) return
+    currentIndexSong--;
+    audio.src = songs[currentIndexSong].path;
+    artist.textContent = songs[currentIndexSong].artist;
+    songName.textContent = songs[currentIndexSong].nameOfSong;
+    songImg.style= songs[currentIndexSong].impPath;
+    audio.play();
+    flag = true;
+    play.style = 'background-image: url(./assets/pause.svg);'
+})
+right.addEventListener('click', function () {
+    if (currentIndexSong == songs.length - 1) return
+    currentIndexSong++;
+    audio.src = songs[currentIndexSong].path;
+    artist.textContent = songs[currentIndexSong].artist;
+    songName.textContent = songs[currentIndexSong].nameOfSong;
+    songImg.style= songs[currentIndexSong].impPath;
+    audio.play();
+    flag = true;
+    play.style = 'background-image: url(./assets/pause.svg);'
+})
