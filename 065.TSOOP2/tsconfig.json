@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "outDir": "dist",
+        "target": "es2015",
+        "module": "CommonJS"
+    },
+    "include": [
+        "src/**/*.ts"
+    ]
+}
