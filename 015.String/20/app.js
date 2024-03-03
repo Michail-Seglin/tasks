@@ -1,11 +1,37 @@
 // 20.Пользователь вводит строку. Необходимо посчитать количество гласных
-const str = prompt('Input string').trim().toLowerCase().split('');
-let count = 0;
+const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-for (let i = 0; i < str.length; i++) {
-    if (str[i] == 'e' || str[i] == 'u' || str[i] == 'o' || str[i] == 'a' || str[i] == 'i') {
-        count += 1;
-    }
+// let sum = 0;
+// for (let i = 0; i < arr.length; i++) {
+//     if (!(arr[i] % 2 == 0)) {
+//         sum += arr[i];
+//     }
+// }
+// console.log(sum);
+
+// let i = 0;
+// let sum = 0;
+// while (i < arr.length) {
+//     if (arr[i] % 3 == 0 || arr[i] % 4 == 0) {
+//         if (sum <= 12) {
+//             sum += arr[i];
+//         } else {
+//             break
+//         }
+//     }
+//     i++
+// }
+
+// const res = arr.reduce((el, res) =>res + el, 0)
+
+function sum(arr) {
+    if (arr.length > 10) return;
+    let sum1 = 0;
+    sum1 += arr[i];
+    i++;
+    sum();
 }
-console.log(str.join(''));
-console.log(`Количество гласных: ${count}`);
+
+sum(arr);
+
+
